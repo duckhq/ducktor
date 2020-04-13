@@ -23,6 +23,7 @@ namespace debugger
             services.AddControllers();
 
             services.AddSingleton<BuildService>();
+            services.AddSingleton<ProjectNameGenerator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

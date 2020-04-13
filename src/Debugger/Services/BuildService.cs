@@ -1,4 +1,5 @@
 ﻿using Debugger.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace Debugger.Services
     {
         private int _counter;
         private readonly List<Build> _builds;
+        private readonly ProjectNameGenerator _generator;
 
-        public BuildService()
+        public BuildService(ProjectNameGenerator generator)
         {
             _builds = new List<Build>();
+            _generator = generator;
         }
 
         public IList<Build> GetBuilds()
@@ -21,10 +24,19 @@ namespace Debugger.Services
             return _builds;
         }
 
+        public Build GetBuild(int id)
+        {
+            return _builds.FirstOrDefault(x => x.Id == id);
+        }
+
         public void AddBuild(Build build)
         {
             build.Id = Interlocked.Increment(ref _counter);
             build.Started = DateTime.Now;
+            build.Project = _generator.GetProjectName();
+            build.Definition = "Debug";
+            build.Branch = "master";
+
             if (build.Status != BuildStatus.Queued && build.Status != BuildStatus.Skipped)
             {
                 build.Finished = DateTime.Now;
@@ -50,9 +62,9 @@ namespace Debugger.Services
             }
         }
 
-        public Build GetBuild(int id)
+        public void DeleteBuild(int id)
         {
-            return _builds.FirstOrDefault(x => x.Id == id);
+            _builds.RemoveAll(x => x.Id == id);
         }
     }
 }
