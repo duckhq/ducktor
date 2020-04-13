@@ -29,3 +29,7 @@ A debugger UI that can be used to test different aspects of Duck, which might be
     ]
 }
 ```
+
+### 3. Navigate to the Debugger UI
+
+* [http://localhost:5000](http://localhost:5000)
