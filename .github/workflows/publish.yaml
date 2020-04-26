@@ -1,0 +1,26 @@
+name: Publish
+on:
+  release:
+    types: [published]
+
+jobs:
+  docker:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v1
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Build Docker image
+        run: |
+            docker build -t duckhq/ducktor:latest -t duckhq/ducktor:${{ steps.get_version.outputs.VERSION }} .
+      - name: Publish Docker image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+        run: |
+          docker login -u ${DOCKER_USERNAME} -p "${DOCKER_PASSWORD}"
+          docker push duckhq/ducktor:latest
+          docker push duckhq/ducktor:${{ steps.get_version.outputs.VERSION }}
