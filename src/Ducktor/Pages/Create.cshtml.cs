@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Debugger.Models;
-using Debugger.Services;
+using Ducktor.Models;
+using Ducktor.Services;
 
-namespace Debugger.Pages.Builds
+namespace Ducktor.Pages.Builds
 {
     public class CreateModel : PageModel
     {

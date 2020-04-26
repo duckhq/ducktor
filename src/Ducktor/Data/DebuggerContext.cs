@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Debugger.Data
+namespace Ducktor.Data
 {
     public class DebuggerContext : DbContext
     {
@@ -9,6 +9,6 @@ namespace Debugger.Data
         {
         }
 
-        public DbSet<Debugger.Models.Build> Build { get; set; }
+        public DbSet<Ducktor.Models.Build> Build { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Debugger.Models
+namespace Ducktor.Models
 {
     public sealed class Build
     {

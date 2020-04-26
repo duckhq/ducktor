@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Debugger.Services
+namespace Ducktor.Services
 {
     public sealed class ProjectNameGenerator
     {
         private readonly Random _random = new Random(DateTime.Now.Millisecond);
+
         public string[] _projects = new string[]
         {
             "Astro", "Bender", "Cauldron",

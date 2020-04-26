@@ -1,7 +1,7 @@
-﻿using Debugger.Services;
+﻿using Ducktor.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Debugger.Api
+namespace Ducktor.Api
 {
     [Route("api")]
     public class ApiController : Controller

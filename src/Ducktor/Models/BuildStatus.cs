@@ -1,4 +1,4 @@
-﻿namespace Debugger.Models
+﻿namespace Ducktor.Models
 {
     public enum BuildStatus
     {

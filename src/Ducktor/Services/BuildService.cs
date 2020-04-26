@@ -1,11 +1,10 @@
-﻿using Debugger.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Ducktor.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-namespace Debugger.Services
+namespace Ducktor.Services
 {
     public sealed class BuildService
     {

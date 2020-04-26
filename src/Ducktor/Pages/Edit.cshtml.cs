@@ -1,23 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Debugger.Models;
-using Debugger.Services;
+using Ducktor.Models;
+using Ducktor.Services;
 
-namespace Debugger.Pages.Builds
+namespace Ducktor.Pages.Builds
 {
-    public class DeleteModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly BuildService _context;
-
-        public DeleteModel(BuildService context)
-        {
-            _context = context;
-        }
 
         [BindProperty]
         public Build Build { get; set; }
 
-        public IActionResult OnGetAsync(int? id)
+        public EditModel(BuildService context)
+        {
+            _context = context;
+        }
+
+        public IActionResult OnGet(int? id)
         {
             if (id == null)
             {
@@ -33,14 +33,14 @@ namespace Debugger.Pages.Builds
             return Page();
         }
 
-        public IActionResult OnPostAsync(int? id)
+        public IActionResult OnPost()
         {
-            if (id == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return Page();
             }
 
-            _context.DeleteBuild(id.Value);
+            _context.UpdateBuild(Build);
 
             return RedirectToPage("./Index");
         }
