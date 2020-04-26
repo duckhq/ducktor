@@ -1,6 +1,6 @@
-# Duck Debugger UI
+# Ducktor
 
-A debugger UI that can be used to test different aspects of Duck, which might be hard to replicate against a real CI server.
+A debugger that can be used to test different aspects of Duck, which might be hard to replicate against a real CI server.
 
 ## Prerequisites
 
@@ -8,14 +8,22 @@ A debugger UI that can be used to test different aspects of Duck, which might be
 
 ## Running
 
-### 1. Start the debugger UI:
+### 1. Start Ducktor:
+
+To build and run Ducktor:
 
 ```
 > cd src
-> dotnet run --project debugger
+> dotnet run --project Ducktor
 ```
 
-### 2. Point a Duck debug collector to the debugger in Duck's configuration:
+Or, you can run Ducktor in a Docker container:
+
+```
+> docker run --rm -p 5000:80 duckhq/ducktor:latest
+```
+
+### 2. Point a Duck debug collector to Ducktor in Duck's configuration:
 
 ```json
 {
@@ -30,6 +38,6 @@ A debugger UI that can be used to test different aspects of Duck, which might be
 }
 ```
 
-### 3. Navigate to the Debugger UI
+### 3. Navigate to the Ducktor UI
 
 * [http://localhost:5000](http://localhost:5000)
